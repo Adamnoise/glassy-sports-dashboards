@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom CSS variables */
 @layer base {
   :root {
     --background: 220 33% 8%;
