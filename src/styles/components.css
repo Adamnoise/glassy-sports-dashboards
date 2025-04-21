@@ -13,15 +13,18 @@
            hover:border-white/10 
            transition-all duration-300;
   }
+
   .glass-card:before {
     content: "";
     @apply absolute inset-0 
            bg-gradient-to-br from-sports-blue/5 via-sports-green/5 to-sports-blue/5 
            opacity-0 transition-opacity duration-500;
   }
+
   .glass-card:hover:before {
     @apply opacity-100;
   }
+
   .sports-card {
     @apply relative overflow-hidden rounded-xl 
            bg-gradient-to-br from-gray-900/90 to-gray-900/95 
@@ -29,37 +32,45 @@
            hover:border-sports-blue/30 
            transition-all duration-300;
   }
+
   .sports-card-glow {
     @apply relative;
   }
+
   .sports-card-glow::after {
     @apply absolute inset-0 rounded-xl;
     @apply shadow-[0_0_30px_10px_rgba(14,165,233,0.05)];
     @apply opacity-0 transition-opacity duration-500;
     content: "";
   }
+
   .sports-card-glow:hover::after {
     @apply opacity-100;
   }
+
   /* Match card styles */
   .match-card {
     @apply sports-card sports-card-glow 
            p-5 h-full flex flex-col min-h-[480px];
   }
+
   /* Button styles */
   .prediction-btn {
     @apply transition-all duration-200 
            px-3 py-2 rounded-lg 
            text-sm font-medium;
   }
+
   .prediction-btn-active {
     @apply bg-sports-blue text-white 
            shadow-md shadow-sports-blue/20;
   }
+
   .prediction-btn-inactive {
     @apply bg-white/5 text-gray-300 
            hover:bg-white/10;
   }
+
   /* Stats card styles */
   .sports-stats-card {
     @apply bg-gradient-to-br from-gray-800/50 to-gray-900/80 
@@ -67,12 +78,14 @@
            hover:border-sports-blue/20 
            transition-all duration-300;
   }
+
   /* Badge styles */
   .sports-badge {
     @apply inline-flex items-center gap-1.5 
            px-2.5 py-0.5 rounded-full 
            text-xs font-medium bg-white/10 backdrop-blur-sm;
   }
+
   /* Layout styles */
   .leaderboard-row {
     @apply flex items-center justify-between 
@@ -80,6 +93,7 @@
            hover:bg-white/10 
            transition-all duration-200;
   }
+
   /* Notification badge */
   .notification-badge {
     @apply absolute -top-1 -right-1 
@@ -87,22 +101,27 @@
            flex items-center justify-center 
            text-xs font-bold;
   }
+
   /* Form styles */
   .input-success {
     @apply border-sports-green/50 
            focus:border-sports-green focus:ring-sports-green/20;
   }
+
   .input-error {
     @apply border-red-500/50 
            focus:border-red-500 focus:ring-red-500/20;
   }
+
   /* Filter styles */
   .filter-active {
     @apply bg-sports-blue/20 text-sports-blue;
   }
+
   .filter-inactive {
     @apply bg-white/5 text-gray-400 hover:bg-white/10;
   }
+
   /* Skeleton loading styles */
   .skeleton-shimmer {
     @apply relative overflow-hidden;
