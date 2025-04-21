@@ -3,21 +3,31 @@
  * Responsive styles (media queries, breakpoint rules, etc)
  */
 @media (max-width: 640px) {
+  /* Match card styles */
   .match-card {
     @apply p-4 min-h-[400px];
   }
+
+  /* Sports stats card styles */
   .sports-stats-card {
     @apply p-3;
   }
+
+  /* Prediction button styles */
   .prediction-btn {
     @apply py-3;
   }
+
+  /* Heading styles */
   h1 {
     @apply text-2xl;
   }
+
   h2 {
     @apply text-xl;
   }
+
+  /* Mobile stack layout */
   .mobile-stack {
     @apply flex-col;
   }
