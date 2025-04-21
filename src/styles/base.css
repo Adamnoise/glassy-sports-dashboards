@@ -1,0 +1,68 @@
+
+@tailwind base;
+
+/**
+ * Base styles and CSS variables
+ */
+@layer base {
+  :root {
+    /* Main colors */
+    --background: 220 33% 4%;
+    --foreground: 210 40% 98%;
+
+    /* Card colors */
+    --card: 220 33% 5.5%;
+    --card-foreground: 210 40% 98%;
+
+    /* Popover colors */
+    --popover: 220 33% 5.5%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary colors */
+    --primary: 196 94% 48%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary colors */
+    --secondary: 156 64% 40%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Utility colors */
+    --muted: 220 20% 12%;
+    --muted-foreground: 210 20% 70%;
+    --accent: 35 92% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border and input colors */
+    --border: 220 20% 18%;
+    --input: 220 20% 16%;
+    --ring: 196 94% 48%;
+
+    /* Border radius */
+    --radius: 0.75rem;
+
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.2), rgba(17, 24, 39, 0.05), transparent);
+    min-height: 100vh;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
