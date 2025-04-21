@@ -1,28 +1,39 @@
-
 /**
- * Animation keyframes and animation-utility styles
+ * Animation keyframes and utility styles
  */
 @layer components {
+  /* ==========================================
+   * Utility Classes for Animations
+   * ========================================== */
   .animated-gradient {
     background-size: 400% 400%;
     animation: gradientAnimation 8s ease infinite;
   }
+
   .notification-pop {
     animation: notificationPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 }
 
-/* Keyframes */
+/* ==========================================
+ * Keyframes Definitions
+ * ========================================== */
+
+/* Gradient Animation */
 @keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* Notification Pop Animation */
 @keyframes notificationPop {
   0% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.2);}
+  50% { transform: scale(1.2); }
   100% { transform: scale(1); opacity: 1; }
 }
+
+/* Shimmer Animation */
 @keyframes shimmer {
-  100% { transform: translateX(100%);}
+  100% { transform: translateX(100%); }
 }
