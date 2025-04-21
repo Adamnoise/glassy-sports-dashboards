@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +50,17 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* New variables for enhanced UI */
+    --rounded-max: 100px;
+    --rounded-min: 10px;
+    --primary-glow: rgb(124, 58, 237);
+    --secondary-glow: rgb(79, 70, 229);
+    --ease-elastic: cubic-bezier(0.5, 1.25, 0.75, 1.25);
+    --ease-elastic-2: cubic-bezier(0.5, 1.5, 0.75, 1.25);
+    --glass-opacity: 0.12;
+    --glass-border-opacity: 0.2;
+    --glass-reflex-opacity: 0.1;
   }
 
   .dark {
@@ -97,5 +109,144 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Enhanced Glass Morphism Styles */
+@layer components {
+  .glass-morphism {
+    @apply relative backdrop-blur-md bg-white/[var(--glass-opacity)] border border-white/[var(--glass-border-opacity)] rounded-xl;
+    box-shadow: 
+      0 4px 30px rgba(0, 0, 0, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s var(--ease-elastic);
+  }
+  
+  .glass-morphism::before {
+    content: "";
+    @apply absolute inset-0 rounded-xl opacity-0 pointer-events-none;
+    background: linear-gradient(45deg, 
+      transparent 25%, 
+      rgba(255, 255, 255, 0.05) 50%, 
+      transparent 75%);
+    background-size: 200% 200%;
+    transition: all 0.3s ease;
+  }
+  
+  .glass-morphism:hover::before {
+    @apply opacity-100;
+    animation: reflex 2s ease infinite;
+  }
+  
+  .glass-morphism::after {
+    content: "";
+    @apply absolute inset-0 rounded-xl opacity-0 pointer-events-none;
+    box-shadow: 0 0 15px 2px var(--primary-glow);
+    transition: opacity 0.3s ease;
+  }
+  
+  .glass-morphism:hover::after {
+    @apply opacity-70;
+  }
+  
+  .glass-morphism .shiny-border {
+    @apply absolute inset-0 pointer-events-none opacity-0 rounded-xl;
+    @apply border border-transparent;
+    transition: all 0.5s ease;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, 
+          linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  .glass-morphism:hover .shiny-border {
+    @apply opacity-100;
+    animation: borderGlow 3s ease infinite;
+  }
+  
+  .text-gradient-primary {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, var(--primary-glow), var(--secondary-glow));
+  }
+  
+  .interactive-card {
+    transition: transform 0.3s var(--ease-elastic);
+  }
+  
+  .interactive-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+  
+  @keyframes reflex {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  @keyframes borderGlow {
+    0%, 100% {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+  
+  .stat-bar {
+    @apply relative h-2 bg-white/10 rounded-full overflow-hidden;
+  }
+  
+  .stat-bar::before {
+    content: "";
+    @apply absolute inset-0 opacity-0;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.1), 
+      transparent);
+    transition: opacity 0.3s ease;
+  }
+  
+  .stat-bar:hover::before {
+    @apply opacity-100;
+    animation: reflex 2s ease infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animateCharIn {
+    animation: charIn 0.3s forwards;
+  }
+  
+  @keyframes charIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8) translateY(10px);
+      filter: blur(5px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
   }
 }
