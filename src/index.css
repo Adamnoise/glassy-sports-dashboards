@@ -3,250 +3,294 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Base styles and CSS variables
+ */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Main colors */
+    --background: 220 33% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card colors */
+    --card: 220 33% 5.5%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover colors */
+    --popover: 220 33% 5.5%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
+    /* Primary colors */
+    --primary: 196 94% 48%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary colors */
+    --secondary: 156 64% 40%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    /* Utility colors */
+    --muted: 220 20% 12%;
+    --muted-foreground: 210 20% 70%;
+    --accent: 35 92% 50%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Border and input colors */
+    --border: 220 20% 18%;
+    --input: 220 20% 16%;
+    --ring: 196 94% 48%;
 
-    --radius: 0.5rem;
+    /* Border radius */
+    --radius: 0.75rem;
 
+    /* Sidebar colors */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
-    
-    /* New variables for enhanced UI */
-    --rounded-max: 100px;
-    --rounded-min: 10px;
-    --primary-glow: rgb(124, 58, 237);
-    --secondary-glow: rgb(79, 70, 229);
-    --ease-elastic: cubic-bezier(0.5, 1.25, 0.75, 1.25);
-    --ease-elastic-2: cubic-bezier(0.5, 1.5, 0.75, 1.25);
-    --glass-opacity: 0.12;
-    --glass-border-opacity: 0.2;
-    --glass-reflex-opacity: 0.1;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.2), rgba(17, 24, 39, 0.05), transparent);
+    min-height: 100vh;
+  }
+
+  * {
+    @apply border-border;
   }
 }
 
-/* Enhanced Glass Morphism Styles */
+/**
+ * Component styles
+ */
 @layer components {
-  .glass-morphism {
-    @apply relative backdrop-blur-md bg-white/[var(--glass-opacity)] border border-white/[var(--glass-border-opacity)] rounded-xl;
-    box-shadow: 
-      0 4px 30px rgba(0, 0, 0, 0.1),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s var(--ease-elastic);
+  /* Card styles */
+  .glass-card {
+    @apply relative overflow-hidden rounded-xl 
+           bg-gradient-to-br from-gray-900/90 via-gray-900/95 to-black 
+           backdrop-blur-sm border border-white/5 
+           hover:border-white/10 
+           transition-all duration-300;
   }
-  
-  .glass-morphism::before {
+
+  .glass-card:before {
     content: "";
-    @apply absolute inset-0 rounded-xl opacity-0 pointer-events-none;
-    background: linear-gradient(45deg, 
-      transparent 25%, 
-      rgba(255, 255, 255, 0.05) 50%, 
-      transparent 75%);
-    background-size: 200% 200%;
-    transition: all 0.3s ease;
+    @apply absolute inset-0 
+           bg-gradient-to-br from-sports-blue/5 via-sports-green/5 to-sports-blue/5 
+           opacity-0 transition-opacity duration-500;
   }
-  
-  .glass-morphism:hover::before {
+
+  .glass-card:hover:before {
     @apply opacity-100;
-    animation: reflex 2s ease infinite;
   }
-  
-  .glass-morphism::after {
+
+  .sports-card {
+    @apply relative overflow-hidden rounded-xl 
+           bg-gradient-to-br from-gray-900/90 to-gray-900/95 
+           shadow-lg border border-sports-blue/20 
+           hover:border-sports-blue/30 
+           transition-all duration-300;
+  }
+
+  .sports-card-glow {
+    @apply relative;
+  }
+  .sports-card-glow::after {
+    @apply absolute inset-0 rounded-xl;
+    @apply shadow-[0_0_30px_10px_rgba(14,165,233,0.05)];
+    @apply opacity-0 transition-opacity duration-500;
     content: "";
-    @apply absolute inset-0 rounded-xl opacity-0 pointer-events-none;
-    box-shadow: 0 0 15px 2px var(--primary-glow);
-    transition: opacity 0.3s ease;
   }
-  
-  .glass-morphism:hover::after {
-    @apply opacity-70;
-  }
-  
-  .glass-morphism .shiny-border {
-    @apply absolute inset-0 pointer-events-none opacity-0 rounded-xl;
-    @apply border border-transparent;
-    transition: all 0.5s ease;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(255, 255, 255, 0.2), 
-      transparent) border-box;
-    mask: linear-gradient(#fff 0 0) padding-box, 
-          linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  }
-  
-  .glass-morphism:hover .shiny-border {
+  .sports-card-glow:hover::after {
     @apply opacity-100;
-    animation: borderGlow 3s ease infinite;
   }
-  
-  .text-gradient-primary {
-    @apply text-transparent bg-clip-text;
-    background-image: linear-gradient(to right, var(--primary-glow), var(--secondary-glow));
+
+  /* Animation styles */
+  .animated-gradient {
+    background-size: 400% 400%;
+    animation: gradientAnimation 8s ease infinite;
   }
-  
-  .interactive-card {
-    transition: transform 0.3s var(--ease-elastic);
+
+  .blur-backdrop {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
-  
-  .interactive-card:hover {
-    transform: translateY(-5px) scale(1.02);
+
+  .text-balance {
+    text-wrap: balance;
   }
-  
-  @keyframes reflex {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
-    }
+
+  /* Match card styles */
+  .match-card {
+    @apply sports-card sports-card-glow 
+           p-5 h-full flex flex-col min-h-[480px];
   }
-  
-  @keyframes borderGlow {
-    0%, 100% {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-    50% {
-      border-color: rgba(255, 255, 255, 0.3);
-    }
+
+  /* Button styles */
+  .prediction-btn {
+    @apply transition-all duration-200 
+           px-3 py-2 rounded-lg 
+           text-sm font-medium;
   }
-  
-  .stat-bar {
-    @apply relative h-2 bg-white/10 rounded-full overflow-hidden;
+  .prediction-btn-active {
+    @apply bg-sports-blue text-white 
+           shadow-md shadow-sports-blue/20;
   }
-  
-  .stat-bar::before {
+  .prediction-btn-inactive {
+    @apply bg-white/5 text-gray-300 
+           hover:bg-white/10;
+  }
+
+  /* Stats card styles */
+  .sports-stats-card {
+    @apply bg-gradient-to-br from-gray-800/50 to-gray-900/80 
+           rounded-xl p-4 border border-white/5 
+           hover:border-sports-blue/20 
+           transition-all duration-300;
+  }
+
+  /* Badge styles */
+  .sports-badge {
+    @apply inline-flex items-center gap-1.5 
+           px-2.5 py-0.5 rounded-full 
+           text-xs font-medium bg-white/10 backdrop-blur-sm;
+  }
+
+  /* Layout styles */
+  .leaderboard-row {
+    @apply flex items-center justify-between 
+           p-3 rounded-lg bg-white/5 
+           hover:bg-white/10 
+           transition-all duration-200;
+  }
+
+  /* Notification styles */
+  .notification-badge {
+    @apply absolute -top-1 -right-1 
+           w-4 h-4 bg-sports-accent rounded-full 
+           flex items-center justify-center 
+           text-xs font-bold;
+  }
+
+  /* Form styles */
+  .input-success {
+    @apply border-sports-green/50 
+           focus:border-sports-green focus:ring-sports-green/20;
+  }
+
+  .input-error {
+    @apply border-red-500/50 
+           focus:border-red-500 focus:ring-red-500/20;
+  }
+
+  /* Filter styles */
+  .filter-active {
+    @apply bg-sports-blue/20 text-sports-blue;
+  }
+  .filter-inactive {
+    @apply bg-white/5 text-gray-400 hover:bg-white/10;
+  }
+
+  /* Animation styles */
+  .notification-pop {
+    animation: notificationPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* Skeleton loading styles */
+  .skeleton-shimmer {
+    @apply relative overflow-hidden;
+  }
+  .skeleton-shimmer::before {
     content: "";
-    @apply absolute inset-0 opacity-0;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(255, 255, 255, 0.1), 
-      transparent);
-    transition: opacity 0.3s ease;
+    @apply absolute inset-0 -translate-x-full 
+           animate-shimmer 
+           bg-gradient-to-r from-transparent via-white/10 to-transparent;
   }
-  
-  .stat-bar:hover::before {
-    @apply opacity-100;
-    animation: reflex 2s ease infinite;
+}
+
+/**
+ * Animation keyframes
+ */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease forwards;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .animateCharIn {
-    animation: charIn 0.3s forwards;
+}
+
+@keyframes notificationPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
   }
-  
-  @keyframes charIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8) translateY(10px);
-      filter: blur(5px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-      filter: blur(0);
-    }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/**
+ * Animation delay utilities
+ */
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+/**
+ * Responsive styles
+ */
+@media (max-width: 640px) {
+  .match-card {
+    @apply p-4 min-h-[400px];
+  }
+  .sports-stats-card {
+    @apply p-3;
+  }
+  .prediction-btn {
+    @apply py-3;
+  }
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  .mobile-stack {
+    @apply flex-col;
   }
 }
