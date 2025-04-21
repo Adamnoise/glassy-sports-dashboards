@@ -1,13 +1,19 @@
-
 /**
- * Utility classes (helper, layout, small tweaks, etc)
+ * Utility Classes (helpers, layout, minor tweaks)
  */
 @layer components {
+  /* ==========================================
+   * Backdrop Styles
+   * ========================================== */
   .blur-backdrop {
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For WebKit-based browsers */
   }
+
+  /* ==========================================
+   * Text Layout Utilities
+   * ========================================== */
   .text-balance {
-    text-wrap: balance;
+    text-wrap: balance; /* Ensures balanced text wrapping */
   }
 }
