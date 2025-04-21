@@ -1,12 +1,16 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import DemoDashboard from "../components/DemoDashboard";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-purple-900 to-slate-900 py-10 px-2 flex flex-col items-center">
+      <h1 className="font-extrabold text-4xl md:text-5xl mb-8 text-gradient-primary drop-shadow-lg tracking-tight animate-fade-in">
+        Glassy Sports Dashboard Components
+      </h1>
+      <p className="mb-14 text-gray-300 max-w-xl text-center animate-fade-in">
+        Explore interactive, glass-morphic React components inspired by the latest sports dashboard UI - ready to power your next web app!
+      </p>
+      <DemoDashboard />
     </div>
   );
 };
